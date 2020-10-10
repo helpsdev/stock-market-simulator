@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Stock from './Components/Stock/stock';
+import StockTypes from './Components/Stock/stockTypes';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>WELCOME!</h1>
       </header>
+      <section>
+        <h2>Stocks Available</h2>
+        <Stock type={StockTypes.STOCKS_AVAILABLE}></Stock>
+      </section>
+      <section>
+        <h2>Stocks Owned</h2>
+        <Stock type={StockTypes.STOCKS_OWNED}></Stock>
+      </section>
     </div>
   );
 }
