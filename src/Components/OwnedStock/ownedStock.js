@@ -1,5 +1,5 @@
 import React from 'react';
-import BuySellButton from '../BuySellButton/buySellButton';
+import BuyButton from '../BuyButton/buyButton';
 
 class OwnedStock extends React.Component{
     constructor(props){
@@ -16,7 +16,7 @@ class OwnedStock extends React.Component{
                     <li key={stock.id}>
                         <span>Stock: {stock.stockName}</span>
                         <span>Price: ${stock.stockPrice}</span>
-                        <BuySellButton onClick={this.buyStock}></BuySellButton>
+                        <BuyButton onClick={this.buyStock}></BuyButton>
                     </li>
                 );
             })

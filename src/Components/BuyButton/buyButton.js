@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BuySellButton extends React.Component{
+class BuyButton extends React.Component{
     constructor(props){
         super(props);
     }
@@ -12,4 +12,4 @@ class BuySellButton extends React.Component{
     }
 }
 
-export default BuySellButton;
+export default BuyButton;

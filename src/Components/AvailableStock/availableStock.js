@@ -1,6 +1,6 @@
 import React from 'react';
 import StockList from '../../stocks_data.json';
-import BuySellButton from '../BuySellButton/buySellButton';
+import BuyButton from '../BuyButton/buyButton';
 
 class AvailableStock extends React.Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class AvailableStock extends React.Component {
                     <li key={stock.id}>
                         <span>Stock: {stock.stockName}</span>
                         <span>Price: ${stock.stockPrice}</span>
-                        <BuySellButton onClick={this.buyStock}></BuySellButton>
+                        <BuyButton onClick={this.buyStock}></BuyButton>
                     </li>
                 );
             })
