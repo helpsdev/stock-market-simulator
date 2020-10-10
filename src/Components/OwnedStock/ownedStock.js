@@ -7,8 +7,8 @@ class OwnedStock extends React.Component{
             this.props.ownStocks.map(stock =>{
                 return (
                     <li key={stock.id}>
-                        <span>Stock: {stock.stockName}</span>
-                        <span>Price: ${stock.stockPrice}</span>
+                        <span>Stock: {stock.name}</span>
+                        <span>Price: ${stock.price}</span>
                         <SellButton></SellButton>
                     </li>
                 );

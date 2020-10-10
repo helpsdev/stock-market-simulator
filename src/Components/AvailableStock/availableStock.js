@@ -7,8 +7,8 @@ class AvailableStock extends React.Component {
             this.props.availableStocks.map(stock => {
                 return (
                     <li key={stock.id}>
-                        <span>Stock: {stock.stockName}</span>
-                        <span>Price: ${stock.stockPrice}</span>
+                        <span>Stock: {stock.name}</span>
+                        <span>Price: ${stock.price}</span>
                         <BuyButton onClick={this.props.onBuyStock.bind(this,stock.id)}></BuyButton>
                     </li>
                 );
