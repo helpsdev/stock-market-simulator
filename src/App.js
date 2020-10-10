@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import Stock from './Components/Stock/stock';
-import StockTypes from './Components/Stock/stockTypes';
+import AvailableStock from './Components/AvailableStock/availableStock';
 
 function App() {
   return (
@@ -11,11 +10,11 @@ function App() {
       </header>
       <section>
         <h2>Stocks Available</h2>
-        <Stock type={StockTypes.STOCKS_AVAILABLE}></Stock>
+        <AvailableStock></AvailableStock>
       </section>
       <section>
         <h2>Stocks Owned</h2>
-        <Stock type={StockTypes.STOCKS_OWNED}></Stock>
+        <AvailableStock></AvailableStock>
       </section>
     </div>
   );

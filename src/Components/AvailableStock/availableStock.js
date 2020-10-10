@@ -1,22 +1,14 @@
 import React from 'react';
 import StockList from '../../stocks_data.json';
-import StockTypes from './stockTypes';
 import BuySellButton from '../BuySellButton/buySellButton';
 
-class Stock extends React.Component {
+class AvailableStock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            stocks: props.type === StockTypes.STOCKS_AVAILABLE ? this.getAvailableStocks() : this.getOwnedStocks(),
+            stocks: StockList.slice(0,10),
             ownStocks:[]
         };
-    }
-
-    getAvailableStocks(){
-        return StockList.slice(0,10);
-    }
-    getOwnedStocks(){
-        return [];
     }
 
     buyStock(stockId){
@@ -46,4 +38,4 @@ class Stock extends React.Component {
 
 
 
-export default Stock;
+export default AvailableStock;
