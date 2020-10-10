@@ -6,15 +6,14 @@ class AvailableStock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            stocks: StockList.slice(0,10),
-            ownStocks:[]
+            stocks: StockList.slice(0,10)
         };
     }
 
     buyStock(stockId){
-        const buyingStock = this.state.stocks.filter(s => s.stockId === stockId);
+        const buyingStock = this.state.stocks.filter(s => s.id === stockId);
+        console.log(buyingStock);
         this.setState({
-            stocks: this.state.stocks,
             ownStocks: this.ownStocks.concat([
                 buyingStock
             ])
@@ -28,7 +27,7 @@ class AvailableStock extends React.Component {
                     <li key={stock.id}>
                         <span>Stock: {stock.stockName}</span>
                         <span>Price: ${stock.stockPrice}</span>
-                        <BuyButton onClick={this.buyStock}></BuyButton>
+                        <BuyButton onClick={this.buyStock.bind(this,stock.id)}></BuyButton>
                     </li>
                 );
             })
