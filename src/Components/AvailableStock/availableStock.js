@@ -25,7 +25,7 @@ class AvailableStock extends React.Component {
         return (
             this.state.stocks.map(stock => {
                 return (
-                    <li key={stock.stockId}>
+                    <li key={stock.id}>
                         <span>Stock: {stock.stockName}</span>
                         <span>Price: ${stock.stockPrice}</span>
                         <BuySellButton onClick={this.buyStock}></BuySellButton>

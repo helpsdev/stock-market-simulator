@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import AvailableStock from './Components/AvailableStock/availableStock';
+import OwnedStock from './Components/OwnedStock/ownedStock';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       </section>
       <section>
         <h2>Stocks Owned</h2>
-        <AvailableStock></AvailableStock>
+        <OwnedStock></OwnedStock>
       </section>
     </div>
   );
