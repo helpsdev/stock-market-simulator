@@ -15,7 +15,15 @@ class Stocks extends React.Component{
     
     handleBuyStock(stockId){
         const buyingStock = this.state.availableStocks.find(s => s.id === stockId);
-        console.log(buyingStock);
+        const isAlreadyOwned = this.state.ownStocks.find(s => s.id === stockId);
+
+        if (isAlreadyOwned) {
+            buyingStock.owned++;
+        }else{
+            buyingStock.owned = 1;
+        }
+        
+
         this.setState({
             ownStocks: this.state.ownStocks.concat([
                 buyingStock

@@ -9,6 +9,7 @@ class OwnedStock extends React.Component{
                     <li key={stock.id}>
                         <span>Stock: {stock.name}</span>
                         <span>Price: ${stock.price}</span>
+                        <span>Owned x {stock.owned}</span>
                         <SellButton></SellButton>
                     </li>
                 );
