@@ -4,12 +4,12 @@ import BuyButton from '../BuyButton/buyButton';
 class AvailableStock extends React.Component {
     render(){
         return (
-            this.props.availableStocks.map(stock => {
+            Object.keys(this.props.availableStocks).map(key => {
                 return (
-                    <li key={stock.id}>
-                        <span>Stock: {stock.name}</span>
-                        <span>Price: ${stock.price}</span>
-                        <BuyButton onClick={this.props.onBuyStock.bind(this,stock.id)}></BuyButton>
+                    <li key={this.props.availableStocks[key].id}>
+                        <span>Stock: {this.props.availableStocks[key].name}</span>
+                        <span>Price: ${this.props.availableStocks[key].price}</span>
+                        <BuyButton onClick={this.props.onBuyStock.bind(this,this.props.availableStocks[key].id)}></BuyButton>
                     </li>
                 );
             })

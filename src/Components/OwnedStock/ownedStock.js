@@ -4,11 +4,11 @@ import SellButton from '../SellButton/sellButton';
 class OwnedStock extends React.Component{
     render(){
         return (
-            this.props.ownStocks.map(stock =>{
+            Object.keys(this.props.ownStocks).map(k =>{
                 return (
-                    <li key={stock.id}>
-                        <span>Stock: {stock.name}</span>
-                        <span>Price: ${stock.price} x {stock.owned}</span>
+                    <li key={this.props.ownStocks[k].id}>
+                        <span>Stock: {this.props.ownStocks[k].name}</span>
+                        <span>Price: ${this.props.ownStocks[k].price} x {this.props.ownStocks[k].owned}</span>
                         <SellButton></SellButton>
                     </li>
                 );

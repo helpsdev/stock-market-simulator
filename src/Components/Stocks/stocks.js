@@ -7,15 +7,22 @@ import StockList from '../../stocks_data.json';
 class Stocks extends React.Component{
     constructor(props){
         super(props);
+        const availableStocksKeyValue = {};
+        StockList.slice(0,10).forEach(s => {
+            availableStocksKeyValue[s.id] = s;
+        });
+        console.log(availableStocksKeyValue);
         this.state = {
-            availableStocks: StockList.slice(0,10),
-            ownStocks:[]
+            availableStocks: availableStocksKeyValue,
+            ownStocks:{}
         };
     }
     
     handleBuyStock(stockId){
-        const buyingStock = this.state.availableStocks.find(s => s.id === stockId);
-        const isAlreadyOwned = this.state.ownStocks.find(s => s.id === stockId);
+        const currentAvailableStocks = this.state.availableStocks;
+        const currentOwnStocks = this.state.ownStocks;
+        const isAlreadyOwned = currentOwnStocks[stockId];
+        const buyingStock = currentAvailableStocks[stockId];
 
         if (isAlreadyOwned) {
             buyingStock.owned++;
@@ -23,11 +30,11 @@ class Stocks extends React.Component{
             buyingStock.owned = 1;
         }
         
+        currentOwnStocks[stockId] = buyingStock;
+
 
         this.setState({
-            ownStocks: this.state.ownStocks.concat([
-                buyingStock
-            ])
+            ownStocks: currentOwnStocks
         });
     }
 
