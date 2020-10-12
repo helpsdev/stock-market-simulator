@@ -28,7 +28,7 @@ class Stocks extends React.Component{
         StockList
             .slice(0, this.maxStockList)
             .forEach(s => {
-                const newStockPrice = (s.price * (Math.random() * (MAX_GROWTH - MIN_GROWTH) + MIN_GROWTH)).toFixed(2);
+                const newStockPrice = s.price * (Math.random() * (MAX_GROWTH - MIN_GROWTH) + MIN_GROWTH);
                 
                 if (currentAvailableStocks[s.id]) {
                     currentAvailableStocks[s.id].price = newStockPrice;
