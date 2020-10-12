@@ -22,7 +22,7 @@ class Stocks extends React.Component{
     updateWhenBuyFunds(stockBought){
         let currentFunds = this.state.funds;
         
-        currentFunds += stockBought.price;
+        currentFunds -= stockBought.price;
 
         this.setState({
             funds:currentFunds
@@ -34,7 +34,7 @@ class Stocks extends React.Component{
     updateWhenSellFunds(stockSold){
         let currentFunds = this.state.funds;
         
-        currentFunds -= stockSold.price;
+        currentFunds += stockSold.price;
 
         this.setState({
             funds:currentFunds
