@@ -9,7 +9,7 @@ class OwnedStock extends React.Component{
                     <li key={this.props.ownStocks[k].id}>
                         <span>Stock: {this.props.ownStocks[k].name}</span>
                         <span>Price: ${this.props.ownStocks[k].price} x {this.props.ownStocks[k].owned}</span>
-                        <SellButton></SellButton>
+                        <SellButton onClick={this.props.onSellStock.bind(this, k)}></SellButton>
                     </li>
                 );
             })

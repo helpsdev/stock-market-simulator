@@ -12,7 +12,6 @@ class Stocks extends React.Component{
         StockList.slice(0,10).forEach(s => {
             availableStocksKeyValue[s.id] = s;
         });
-        console.log(availableStocksKeyValue);
         this.state = {
             availableStocks: availableStocksKeyValue,
             ownStocks:{},
@@ -20,7 +19,7 @@ class Stocks extends React.Component{
         };
     }
     
-    updateFunds(stockBought){
+    updateWhenBuyFunds(stockBought){
         let currentFunds = this.state.funds;
         
         currentFunds += stockBought.price;
@@ -32,13 +31,41 @@ class Stocks extends React.Component{
         
     }
 
+    updateWhenSellFunds(stockSold){
+        let currentFunds = this.state.funds;
+        
+        currentFunds -= stockSold.price;
+
+        this.setState({
+            funds:currentFunds
+        });
+
+        
+    }
+
+    handleSellStock(stockId){
+        const currentOwnStocks = this.state.ownStocks;
+        const stockOwned = currentOwnStocks[stockId];
+
+        if (stockOwned && stockOwned.owned > 0) {
+            stockOwned.owned--;
+            this.updateWhenSellFunds(stockOwned);
+        }else{
+            delete currentOwnStocks[stockId];
+        }
+
+        this.setState({
+            ownStocks: currentOwnStocks
+        });
+    }
+
     handleBuyStock(stockId){
         const currentAvailableStocks = this.state.availableStocks;
         const currentOwnStocks = this.state.ownStocks;
-        const isAlreadyOwned = currentOwnStocks[stockId];
+        const isStockOwned = currentOwnStocks[stockId];
         const buyingStock = currentAvailableStocks[stockId];
 
-        if (isAlreadyOwned) {
+        if (isStockOwned) {
             buyingStock.owned++;
         }else{
             buyingStock.owned = 1;
@@ -46,7 +73,7 @@ class Stocks extends React.Component{
         
         currentOwnStocks[stockId] = buyingStock;
 
-        this.updateFunds(buyingStock);
+        this.updateWhenBuyFunds(buyingStock);
 
         this.setState({
             ownStocks: currentOwnStocks
@@ -65,7 +92,7 @@ class Stocks extends React.Component{
                 <section className="stocks-owned">
                     <h2>Stocks Owned</h2>
                     <ul>
-                        <OwnedStock ownStocks={this.state.ownStocks}></OwnedStock>
+                        <OwnedStock ownStocks={this.state.ownStocks} onSellStock={this.handleSellStock.bind(this)}></OwnedStock>
                     </ul>
                 </section>
                 <section>

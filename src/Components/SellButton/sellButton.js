@@ -3,7 +3,7 @@ import React from 'react';
 class SellButton extends React.Component{
     render(){
         return(
-            <button>Sell</button>
+            <button onClick={this.props.onClick}>Sell</button>
         );
     }
 }

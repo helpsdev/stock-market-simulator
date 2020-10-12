@@ -9,7 +9,7 @@ class AvailableStock extends React.Component {
                     <li key={this.props.availableStocks[key].id}>
                         <span>Stock {this.props.availableStocks[key].name}: </span>
                         <span>${this.props.availableStocks[key].price} </span>
-                        <BuyButton onClick={this.props.onBuyStock.bind(this,this.props.availableStocks[key].id)}></BuyButton>
+                        <BuyButton onClick={this.props.onBuyStock.bind(this, key)}></BuyButton>
                     </li>
                 );
             })
