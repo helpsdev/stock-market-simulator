@@ -8,8 +8,9 @@ import './stocks.css'
 class Stocks extends React.Component{
     constructor(props){
         super(props);
+        this.maxStockList = 10;
         const availableStocksKeyValue = {};
-        StockList.slice(0,10).forEach(s => {
+        StockList.slice(0, this.maxStockList).forEach(s => {
             availableStocksKeyValue[s.id] = s;
         });
         this.state = {
@@ -19,6 +20,41 @@ class Stocks extends React.Component{
         };
     }
     
+    updateStocks(){
+        const MAX_GROWTH = 1.25;
+        const MIN_GROWTH = 0.75;
+        const currentAvailableStocks = this.state.availableStocks;
+        const currentOwnStocks = this.state.ownStocks;
+        StockList
+            .slice(0, this.maxStockList)
+            .forEach(s => {
+                const newStockPrice = (s.price * (Math.random() * (MAX_GROWTH - MIN_GROWTH) + MIN_GROWTH)).toFixed(2);
+                
+                if (currentAvailableStocks[s.id]) {
+                    currentAvailableStocks[s.id].price = newStockPrice;
+                }
+                if (currentOwnStocks[s.id]) {
+                    currentOwnStocks[s.id].price = newStockPrice;
+                }
+                
+            });
+        this.setState({
+            availableStocks: currentAvailableStocks,
+            ownStocks: currentOwnStocks
+        });
+    }
+
+    componentDidMount(){
+        this.timerID = setInterval(
+            () => this.updateStocks(),
+            5000
+          );
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timerID);
+    }
+
     updateWhenBuyFunds(stockBought){
         let currentFunds = this.state.funds;
         
@@ -60,12 +96,14 @@ class Stocks extends React.Component{
             ownStocks: currentOwnStocks
         });
     }
-
+    
     handleBuyStock(stockId){
         const currentAvailableStocks = this.state.availableStocks;
         const currentOwnStocks = this.state.ownStocks;
         const isStockOwned = currentOwnStocks[stockId];
         const buyingStock = currentAvailableStocks[stockId];
+
+        if(this.state.funds < buyingStock.price) return;
 
         if (isStockOwned) {
             buyingStock.owned++;
@@ -98,7 +136,7 @@ class Stocks extends React.Component{
                     </ul>
                 </section>
                 <section>
-                    <h2>${this.state.funds.toFixed(2)}</h2>
+                    <h2>Funds: ${this.state.funds.toFixed(2)}</h2>
                 </section>
             </div>
         );
