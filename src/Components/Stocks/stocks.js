@@ -2,6 +2,7 @@ import React from 'react';
 import AvailableStock from '../AvailableStock/availableStock';
 import OwnedStock from '../OwnedStock/ownedStock';
 import StockList from '../../stocks_data.json';
+import './stocks.css'
 
 
 class Stocks extends React.Component{
@@ -40,14 +41,18 @@ class Stocks extends React.Component{
 
     render(){
         return(
-            <div>
-                <section>
+            <div className="stocks">
+                <section className="stocks-available">
                     <h2>Stocks Available</h2>
-                    <AvailableStock availableStocks={this.state.availableStocks} onBuyStock={this.handleBuyStock.bind(this)}></AvailableStock>
+                    <ul>
+                        <AvailableStock availableStocks={this.state.availableStocks} onBuyStock={this.handleBuyStock.bind(this)}></AvailableStock>
+                    </ul>
                 </section>
-                <section>
+                <section className="stocks-owned">
                     <h2>Stocks Owned</h2>
-                    <OwnedStock ownStocks={this.state.ownStocks}></OwnedStock>
+                    <ul>
+                        <OwnedStock ownStocks={this.state.ownStocks}></OwnedStock>
+                    </ul>
                 </section>
             </div>
         );

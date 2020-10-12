@@ -1,0 +1,12 @@
+.stocks{
+    display: flex;
+    justify-content: space-evenly;
+}
+.stocks-available > ul, .stocks-owned > ul{
+    list-style-type: none;
+    text-align: left;
+}
+.stocks-available > ul, .stocks-owned > ul{
+    list-style-type: none;
+    text-align: left;
+}
