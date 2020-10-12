@@ -50,7 +50,9 @@ class Stocks extends React.Component{
         if (stockOwned && stockOwned.owned > 0) {
             stockOwned.owned--;
             this.updateWhenSellFunds(stockOwned);
-        }else{
+        }
+
+        if (stockOwned.owned === 0) {
             delete currentOwnStocks[stockId];
         }
 
