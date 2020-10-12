@@ -15,10 +15,23 @@ class Stocks extends React.Component{
         console.log(availableStocksKeyValue);
         this.state = {
             availableStocks: availableStocksKeyValue,
-            ownStocks:{}
+            ownStocks:{},
+            funds:1000
         };
     }
     
+    updateFunds(stockBought){
+        let currentFunds = this.state.funds;
+        
+        currentFunds += stockBought.price;
+
+        this.setState({
+            funds:currentFunds
+        });
+
+        
+    }
+
     handleBuyStock(stockId){
         const currentAvailableStocks = this.state.availableStocks;
         const currentOwnStocks = this.state.ownStocks;
@@ -33,6 +46,7 @@ class Stocks extends React.Component{
         
         currentOwnStocks[stockId] = buyingStock;
 
+        this.updateFunds(buyingStock);
 
         this.setState({
             ownStocks: currentOwnStocks
@@ -53,6 +67,9 @@ class Stocks extends React.Component{
                     <ul>
                         <OwnedStock ownStocks={this.state.ownStocks}></OwnedStock>
                     </ul>
+                </section>
+                <section>
+                    <h2>${this.state.funds.toFixed(2)}</h2>
                 </section>
             </div>
         );
