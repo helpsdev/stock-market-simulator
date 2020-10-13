@@ -123,6 +123,12 @@ class Stocks extends React.Component{
     render(){
         return(
             <div className="stocks">
+                <header style={{width:100+"%"}}>
+                    <h1>WELCOME!</h1>
+                </header>
+                <section style={{width:100+"%"}}>
+                    <h2 style={{float:"right"}}>Funds: ${this.state.funds.toFixed(2)}</h2>
+                </section>
                 <section className="stocks-available">
                     <h2>Stocks Available</h2>
                     <ul>
@@ -134,9 +140,6 @@ class Stocks extends React.Component{
                     <ul>
                         <OwnedStock ownStocks={this.state.ownStocks} onSellStock={this.handleSellStock.bind(this)}></OwnedStock>
                     </ul>
-                </section>
-                <section>
-                    <h2>Funds: ${this.state.funds.toFixed(2)}</h2>
                 </section>
             </div>
         );

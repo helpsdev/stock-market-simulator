@@ -1,6 +1,7 @@
 .stocks{
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 .stocks-available > ul, .stocks-owned > ul{
     list-style-type: none;
