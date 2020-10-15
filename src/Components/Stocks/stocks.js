@@ -3,6 +3,7 @@ import AvailableStock from '../AvailableStock/availableStock';
 import OwnedStock from '../OwnedStock/ownedStock';
 import StockList from '../../stocks_data.json';
 import './stocks.css'
+import Clock from '../Clock/clock';
 
 
 class Stocks extends React.Component{
@@ -126,6 +127,9 @@ class Stocks extends React.Component{
                 <header style={{width:100+"%"}}>
                     <h1>WELCOME!</h1>
                 </header>
+                <section>
+                    <Clock></Clock>
+                </section>
                 <section style={{width:100+"%"}}>
                     <h2 style={{float:"right"}}>Funds: ${this.state.funds.toFixed(2)}</h2>
                 </section>
